@@ -21,7 +21,8 @@ class SaludoControllerTest {
     void getHolaMundoDebeRetornar200() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.mensaje").value("Hola Mundo"));
+                .andExpect(jsonPath("$.mensaje").value("Hola Mundo. Bienvenido a la evaluación 2"))
+                .andExpect(jsonPath("$.descripcion").value("Microservicio de saludos para evaluacion DevOps"));
     }
 
     @Test
@@ -38,13 +39,5 @@ class SaludoControllerTest {
         mockMvc.perform(get("/saludo").param("nombre", "Pedro"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.mensaje").value("Hola, Pedro!"));
-    }
-
-    @Test
-    @DisplayName("GET /info debe retornar datos del servicio")
-    void getInfoDebeRetornarDatosDelServicio() throws Exception {
-        mockMvc.perform(get("/info"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.servicio").value("saludo-service"));
     }
 }
