@@ -1,12 +1,9 @@
 version: '3.8'
 
-# ============================================================
 # Docker Compose - saludo-service (IE5)
 # Orquestación: app Spring Boot + Nginx como proxy inverso
-# ============================================================
 
 services:
-
   # Servicio 1: Microservicio Spring Boot
   app:
     build:
@@ -17,6 +14,8 @@ services:
       - "8080:8080"
     networks:
       - backend
+    volumes:
+      - app-logs:/app/logs
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
       interval: 15s
