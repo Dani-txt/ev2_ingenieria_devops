@@ -1,35 +1,29 @@
-
 # Dockerfile - saludo-service
 # Multi-stage build
 
-# 1ero se Descargan dependencias
-FROM eclipse-temurin:17-jdk AS dependencies
+# Etapa 1: Descargar dependencias
+FROM maven:3.9-eclipse-temurin-17 AS dependencies
 WORKDIR /app
-RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
-# Ejecución de los tests
-FROM eclipse-temurin:17-jdk AS test
+# Etapa 2: Ejecutar tests
+FROM maven:3.9-eclipse-temurin-17 AS test
 WORKDIR /app
-RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 COPY . .
 COPY --from=dependencies /root/.m2 /root/.m2
 RUN mvn test -B
 
-# Compilación y empaquetación
-FROM eclipse-temurin:17-jdk AS compile
+# Etapa 3: Compilar y empaquetar
+FROM maven:3.9-eclipse-temurin-17 AS compile
 WORKDIR /app
-RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 COPY --from=test /app /app
 COPY --from=dependencies /root/.m2 /root/.m2
 RUN mvn clean package -DskipTests -B
 
-# Imagen que va a producción (solo JRE, imagen mínima)
+# Etapa 4: Producción (solo JRE, imagen mínima)
 FROM eclipse-temurin:17-jre AS prod
 WORKDIR /app
-
-# No correr como root (crear usuarios con privilegios especificos)
 RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 USER appuser
 COPY --from=compile /app/target/*.jar app.jar
