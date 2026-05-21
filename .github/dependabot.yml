@@ -1,0 +1,22 @@
+version: 2
+updates:
+  # Dependencias Maven (Java)
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "Danitxt"
+    labels:
+      - "dependencies"
+      - "java"
+
+  # Dependencias de GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "github-actions"
