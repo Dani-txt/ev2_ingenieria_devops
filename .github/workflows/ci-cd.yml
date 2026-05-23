@@ -35,19 +35,19 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-
 
-      - name: Install Snyk CLI
-        run: npm install -g snyk
+      - name: Run Snyk Setup
+        uses: snyk/actions/setup@master
 
-      - name: Authenticate Snyk
+      # SIN snyk auth — el token se pasa como variable de entorno
+      - name: Run Snyk test (falla si hay vulnerabilidades HIGH)
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: snyk auth $SNYK_TOKEN
-
-      - name: Run Snyk test (falla si hay vulnerabilidades HIGH)
         run: snyk test --severity-threshold=high
 
       - name: Generate Snyk JSON Report
         if: always()
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: snyk test --json > snyk-report.json || echo "Reporte generado"
 
       - name: Upload Snyk Report
@@ -56,7 +56,7 @@ jobs:
         with:
           name: snyk-report
           path: snyk-report.json
-
+          
   # JOB 2: Tests unitarios + JaCoCo
   # Depende de snyk-scan — si Snyk falla, este no corre
   test:
