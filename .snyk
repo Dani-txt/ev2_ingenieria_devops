@@ -116,5 +116,9 @@ ignore:
     - '*':
         reason: Fix requires springdoc 2.8.10 not yet stable. Tracked for upgrade.
         expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-16643259:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
 
 patch: {}
