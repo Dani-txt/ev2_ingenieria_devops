@@ -81,7 +81,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
 
       - name: Run tests and generate JaCoCo report
-        run: ./mvnw clean verify -B
+        run: ./mvn clean verify -B
 
       - name: Upload JaCoCo Report
         uses: actions/upload-artifact@v4
@@ -132,7 +132,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          ./mvnw verify sonar:sonar \
+          ./mvn verify sonar:sonar \
             -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=https://sonarcloud.io \
@@ -185,7 +185,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
 
       - name: Build JAR
-        run: ./mvnw clean package -DskipTests -B
+        run: ./mvn clean package -DskipTests -B
 
       - name: Deploy with Docker Compose
         run: docker compose up -d --build
