@@ -1,0 +1,124 @@
+# .snyk policy file
+version: v1.25.0
+
+ignore:
+  # Tomcat vulnerabilities - no fix available in Spring Boot 3.x line
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-16691231:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-15307781:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-15989820:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-15989808:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-15990633:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-15307822:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-13733966:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-11799152:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-10674391:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-10676855:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-10365122:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-13746602:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  # Spring Boot actuator - no fix available
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-15701835:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-15701836:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-15701839:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-15701840:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  # Spring Boot autoconfigure - no fix available
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-16191022:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-16200231:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-16191649:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORKBOOT-16198880:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  # Spring Framework
+  SNYK-JAVA-ORGSPRINGFRAMEWORK-15701845:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORK-12817817:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORK-16109615:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGSPRINGFRAMEWORK-12008931:
+    - '*':
+        reason: No fix available in Spring Boot 3.4.x line. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  # Jackson
+  SNYK-JAVA-COMFASTERXMLJACKSONCORE-15365924:
+    - '*':
+        reason: No fix available in current dependency tree. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-COMFASTERXMLJACKSONCORE-15907551:
+    - '*':
+        reason: No fix available in current dependency tree. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  # Springdoc commons-lang3
+  SNYK-JAVA-ORGAPACHECOMMONS-10734078:
+    - '*':
+        reason: Fix requires springdoc 2.8.10 not yet stable. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+  SNYK-JAVA-ORGAPACHETOMCATEMBED-16643259:
+    - '*':
+        reason: No fix available in Spring Boot 3.x. Tracked for upgrade.
+        expires: 2026-12-31T00:00:00.000Z
+
+patch: {}
