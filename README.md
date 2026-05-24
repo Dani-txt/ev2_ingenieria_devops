@@ -161,7 +161,7 @@ El `GITHUB_TOKEN` es inyectado automáticamente por GitHub Actions, no requiere 
 
 ## Uso de IA
 
-- **Claude (Anthropic):** Apoyo en configuración del pipeline CI/CD, corrección del Dockerfile multi-stage, resolución de errores de autenticación en Snyk, configuración del archivo `.snyk` y estructuración del README.
-- Todo el código fue revisado, entendido y adaptado manualmente por los integrantes del equipo.
+- Claude (Anthropic): Asistencia en la corrección de errores en el pipeline ci-cd (dependencias y testeos), dependabot, configuración del archivo `.snyk` y estructuración del README.
+- La lógica de negocio, estructura del proyecto, configuración del pipeline y docker, así cómo decisiones de arquitectura fueron definidas por el equipo de trabajo.
 
 ---
