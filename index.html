@@ -1,0 +1,534 @@
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+DevOps Continuous Feedback
+</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f5f5f5;
+    color: #222;
+}
+
+h1, h2, h3 {
+    color: #111;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #222;
+    color: white;
+}
+
+code {
+    background: #eee;
+    padding: 2px 4px;
+}
+
+pre {
+    background: #eee;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>DEVOPS CONTINUOUS FEEDBACK</h1>
+<h2>Resumen ejecutivo</h2>
+<p>Las siguientes mejoras ayudarán a incrementar la madurez DevOps del repositorio.</p>
+<h3>🟠 Prioridad media</h3>
+<ul>
+<li>Multi-stage build</li>
+</ul>
+<hr>
+<h2>Roadmap sugerido para alcanzar el 100%</h2>
+<ol>
+<li>Multi-stage build</li>
+<li>Imágenes optimizadas</li>
+</ol>
+<hr>
+<h2>Cómo resolver los GAPs</h2>
+<h3>Multi-stage build</h3>
+<p>Impacto: La imagen Docker puede ser demasiado pesada.</p>
+<h4>Cómo resolver</h4>
+<ul>
+<li>Separar etapa build/runtime</li>
+<li>Usar FROM ... AS build</li>
+</ul>
+<h4>Ejemplo</h4>
+<pre><code>
+FROM node:20 AS build
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+RUN npm run build
+
+FROM nginx:alpine
+
+COPY --from=build /app/dist /usr/share/nginx/html
+</code></pre>
+<hr>
+<h2>Tabla evaluación</h2>
+<table>
+<thead>
+<tr>
+<th>IE</th>
+<th>Qué se revisará</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE1</td>
+<td>Dockerfile existe</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Docker build funciona</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Imágenes optimizadas</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Multi-stage build</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Existen tests</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Pipeline ejecuta tests</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Coverage equivalente JaCoCo</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Dependabot configurado</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>SonarCloud/Snyk</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Bloqueos seguridad needs</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Limits CPU/MEM</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Reservations CPU/MEM</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>Deploy automático</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>README documentado</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Docker Compose/K8s</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Múltiples servicios</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Healthchecks</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Volumes</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Networks</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Resultado revisión</h2>
+<table>
+<thead>
+<tr>
+<th>IE</th>
+<th>Evaluación</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE1</td>
+<td>Dockerfile existe</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Multi-stage build</td>
+<td>⚠️ MEJORA PENDIENTE</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Imágenes optimizadas</td>
+<td>⚠️ MEJORA PENDIENTE</td>
+</tr>
+<tr>
+<td>IE1</td>
+<td>Docker build funciona</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>Pipeline GitHub Actions</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Pipeline ejecuta tests</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>SonarCloud/Snyk</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Bloqueos seguridad needs</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>Deploy automático</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Tecnología detectada</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE2</td>
+<td>Coverage equivalente JaCoCo</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Dependabot configurado</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Docker Compose/K8s</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Múltiples servicios</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Healthchecks</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Volumes</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE5</td>
+<td>Networks</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Limits CPU/MEM</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE3</td>
+<td>Reservations CPU/MEM</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+<tr>
+<td>IE4</td>
+<td>README documentado</td>
+<td>✅ IMPLEMENTADO</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Detalle validaciones</h2>
+<h3>IE1 - Dockerfile existe</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Dockerfile encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Dockerfile
+</code></pre>
+<h3>IE1 - Multi-stage build</h3>
+<ul>
+<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+</li>
+<li><p>Detalle: No usa multi-stage</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Dockerfile revisado
+</code></pre>
+<ul>
+<li>Qué falta: Agregar multi-stage</li>
+</ul>
+<h3>IE1 - Imágenes optimizadas</h3>
+<ul>
+<li><p>Estado: ⚠️ MEJORA PENDIENTE</p>
+</li>
+<li><p>Detalle: No usa imágenes optimizadas</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Dockerfile revisado
+</code></pre>
+<ul>
+<li>Qué falta: Usar alpine/slim/distroless</li>
+</ul>
+<h3>IE1 - Docker build funciona</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Docker build exitoso</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>-
+</code></pre>
+<h3>IE4 - Pipeline GitHub Actions</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: 2 workflow(s) detectados</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>/home/runner/work/ev2_ingenieria_devops/ev2_ingenieria_devops/.github/workflows/ep02-devops-continuous-feedback.yml, /home/runner/work/ev2_ingenieria_devops/ev2_ingenieria_devops/.github/workflows/ci-cd.yml
+</code></pre>
+<h3>IE2 - Pipeline ejecuta tests</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Ejecuta tests</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE3 - SonarCloud/Snyk</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene seguridad</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE3 - Bloqueos seguridad needs</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Usa needs</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE4 - Deploy automático</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene deploy</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Workflow revisado
+</code></pre>
+<h3>IE2 - Tecnología detectada</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: java</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>Archivos proyecto
+</code></pre>
+<h3>IE2 - Coverage equivalente JaCoCo</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Coverage detectado para java</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>
+Tecnología: java
+
+Coverage esperado:
+JaCoCo
+
+Keywords:
+jacoco, jacocoTestReport, jacocoTestCoverageVerification, toolVersion, minimum =, violationRules
+      
+</code></pre>
+<h3>IE3 - Dependabot configurado</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Dependabot encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>.github/dependabot.yml
+</code></pre>
+<h3>IE5 - Docker Compose/K8s</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: docker-compose encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose.yml
+</code></pre>
+<h3>IE5 - Múltiples servicios</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: 2 servicios</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>app, nginx
+</code></pre>
+<h3>IE5 - Healthchecks</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene healthchecks</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE5 - Volumes</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene volumes</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE5 - Networks</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene networks</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE3 - Limits CPU/MEM</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene limits</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE3 - Reservations CPU/MEM</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: Tiene reservations</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>docker-compose revisado
+</code></pre>
+<h3>IE4 - README documentado</h3>
+<ul>
+<li><p>Estado: ✅ IMPLEMENTADO</p>
+</li>
+<li><p>Detalle: README encontrado</p>
+</li>
+<li><p>Evidencia:</p>
+</li>
+</ul>
+<pre><code>README.md
+</code></pre>
+
+
+</body>
+
+</html>
